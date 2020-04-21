@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>BRUMAG.</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+
+    <div style="width: 1400px; margin: auto">
+        <textarea id="thetext" rows="8">wow nu kan je zelf je eigen
+lompe rumag teksten maken
+
+wat leven we toch
+in een prachtige tijd</textarea>
+        <input type="number" id="starty" value="150" step="10"/>
+        <canvas id="canvas" width="900" height="900" style="border: 1px solid white"></canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        var imageObj = new Image();
+
+        imageObj.onload = function () {
+            var textarea = document.getElementById("thetext");
+            updateCanvas(textarea.value, 180);
+        }
+        imageObj.src = "rumag.png";
+
+        function updateCanvas(text, starty) {
+            context.save()
+            context.drawImage(imageObj, 0, 0);
+            context.restore();
+
+            context.save();
+            console.log(starty);
+
+            var lineHeight = 52;
+            var textHeight = 0;
+
+            text = text.toUpperCase();
+            text = text.replace(/ /g, ".");
+            text = text.replace(/(.)$/gm, "$1.");
+            var lines = text.split("\n");
+
+            context.translate(450, starty);
+
+            context.font = "50pt AlternateGothic";
+            context.fillStyle = "white";
+            context.textAlign = "center";
+
+            for (var i = 0; i < lines.length; i++) {
+                context.fillText(lines[i], 0, (i * lineHeight));
+
+                textHeight += lineHeight;
+            }
+
+            context.font = "16pt AlternateGothic";
+            context.fillText("- EST. M M X I I I -", 0, textHeight + 10);
+
+            context.font = "40pt AlternateGothic";
+            context.fillText("BRUMAG.", 0, textHeight + 55);
+
+            context.restore();
+        }
+
+        var textarea = document.getElementById("thetext");
+        textarea.onkeyup = function(ta) {
+            updateCanvas(ta.target.value, input.value);
+        }
+
+        var input = document.getElementById("starty");
+        input.onchange = function(ta) {
+            updateCanvas(textarea.value, input.value);
+        }
+    </script>
+
+</body>
+
+</html>
