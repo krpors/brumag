@@ -9,16 +9,24 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 900px;
+    width: 100%;
+    border: 1px solid #555;
 }
 
 textarea {
     margin: auto;
-    width: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 900px;
+    width: 100%;
     display:block;
-    background-color: black;
     color: white;
-    border: 1px solid white;
+    resize: none;
+
+    border: 1px solid #999999;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #555;;
 }
 
 input {
@@ -27,12 +35,60 @@ input {
     margin-bottom: 5px;
     padding:10px;
     width: 100px;
-    display:block;
     background-color: black;
     color: white;
-    border: 1px solid white;
+    border: 1px solid #555;
 }
 
 body {
+	margin: 40px auto;
+	max-width: 650px;
+    line-height: 1.6;
+    font-family: sans-serif;
+	font-size: 16px;
+	color: white;
+	padding: 0 10px;
     background-color: black;
+}
+
+blockquote {
+    padding: 5px;
+    padding-left: 20px;
+}
+
+h1, h2, h3 {
+    font-family: "AlternateGothic";
+    line-height:1.2;
+    background-color: #222;
+    padding: 5px;
+    margin-bottom: 10px;
+    padding-left:15px
+}
+
+h1 {
+    font-size: 40pt;
+}
+
+h2 {
+    font-size: 25pt;
+}
+
+a {
+    color: white;
+}
+
+.author {
+    font-size: 8pt;
+    background-color: #222;
+    padding: 10px;
+}
+
+.q {
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.a {
+    margin-bottom: 20px;
 }

@@ -4,22 +4,128 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="author" content="Kevin Pors">
+    <meta name="description" content="RUMAG niet stelen, maar doen ze wel, dus jij ook!">
     <title>BRUMAG.</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 
 <body>
+    <header>
+        <h1>BRUMAG.</h1>
 
-    <div style="width: 1400px; margin: auto">
-        <textarea id="thetext" rows="8">wow nu kan je zelf je eigen
+        Maak hier je irrante-met-puntjes-geschreven-tekst zelf en strijk met de
+        eer van originaliteit! Of juist niet. Ik weet het niet. Hier zijn wat
+        citaten:
+
+        <blockquote>
+            "RUMAG is kut!"
+            <cite>&mdash; Rationele mensen</cite>
+        </blockquote>
+
+        <blockquote>
+            "RUMAG is leuk, maar na de Lubach uitzending heb ik ze toch maar ontvolgd."
+            <cite>&mdash; Mijn vrouw</cite>
+        </blockquote>
+
+
+        <blockquote>
+            "RUMAG kopieert, jij imiteert!"
+            <cite>&mdash; Ik</cite>
+        </blockquote>
+    </header>
+
+    Volg deze 7 stappen tot het behalen van je succes. Let op: als het lettertype
+    niet meteen goed is in het plaatje, ververs dan de pagina.
+
+    <h2>Stap 1:</h2>
+    Vul hier je slechte tekst in om leuk proberen te zijn.
+    <textarea id="thetext" rows="8">wow nu kan je zelf je eigen
 lompe rumag teksten maken
 
 wat leven we toch
 in een prachtige tijd</textarea>
-        <input type="number" id="starty" value="150" step="10"/>
-        <canvas id="canvas" width="900" height="900" style="border: 1px solid white"></canvas>
-    </div>
+
+    <h2>Stap 2:</h2>
+    Je hippe EST tekst:
+    <input type="text" id="est" value="MCMLMCLX" />
+
+    <h2>Stap 3:</h2>
+    Je dope merknaam:
+    <input type="text" id="brentnaam" value="brumag" />
+
+    <h2>Stap 4:</h2>
+    Verticale uitlijning van je tekst:
+     <input type="number" id="starty" value="330" step="10" />
+
+    <canvas id="canvas" width="900" height="900"></canvas>
+
+    <h2>Stap 5:</h2>
+    Rechtermuisknop om het op te slaan als een plaatje.
+
+    <h2>Stap 6:</h2>
+    ???
+
+    <h2>Stap 7:</h2>
+    Profiteer.
+
+    <h2>F.A.Q.</h2>
+
+    <p>
+        <div class="q">Q: Krijg de blafhoest, kan dit niet gebruikersvriendelijker?</div>
+        <div class="a">A: Ja vast wel. <a href="https://github.com/krpors/brumag/">Maak een PR</a> als je het beter kan, of fork
+        de repository en doe het zelf.</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Is dit legaal?</div>
+        <div class="a">A: Ik denk het wel. RUMAG plagieert ook. Het enige wat ik gebruik is de achtergrond.
+            En ik heb daar teveel tijd aan besteed om die zo schoon mogelijk te krijgen (ik kon de originele achtergrond niet vinden).
+            Het lettertype is van de interwebs te downloaden en de rest heb ik zelf gemaakt.</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Waarom heb je dit gemaakt?</div>
+        <div class="a">A: Inception. Ineens krijg je een idee. Ben ik er trots op? Nee, want dit werkt natuurlijk vervelende RUMAGGERS in de hand.</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Waarom laat je het dan online staan?</div>
+        <div class="a">A: In de hoop dat de draak gestoken wordt met RUMAG.</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Gast, zo'n generator bestaat al op internet!</div>
+        <div class="a">A: Waar dan? Ik heb 5 seconden gezocht maar kon niets vinden dus heb ik het zelf maar gedaan.</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Ik wil graag kleine letters (lowercase)!!</div>
+        <div class="a">A: Doe even normaal. Wil je nou imiteren of niet?</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Ik wil geen puntjes, maar <code>LUBAG,</code> stijl. Kan dat?</div>
+        <div class="a">A: Misschien in de toekomst als ik er zin in heb. <a href="https://github.com/krpors/brumag/">Of maak een PR</a>.</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Je code ziet er niet uit. Waarom niet?</div>
+        <div class="a">A: Ik heb het effe in een paar uur in elkaar geflanst terwijl ik wat beters te doen had. Geen zin in verbetering.
+            Ik was nog niet helemaal bekend met het &lt;canvas&gt; element enz.</div>
+    </p>
+
+    <p>
+        <div class="q">Q: Waarom BRUMAG.?</div>
+        <div class="a">A: Het is een Porte-manteauwoord van mijn beste maatje en het woordje MAG. Hoera!</div>
+    </p>
+
+    <footer class="author">
+        Kevin Pors, 2020.<br/>
+        <a href="https://github.com/krpors/brumag/">Repository is hier.</a>
+    </footer>
+
     <script>
         var canvas = document.getElementById("canvas");
         var context = canvas.getContext("2d");
@@ -27,24 +133,28 @@ in een prachtige tijd</textarea>
 
         imageObj.onload = function () {
             var textarea = document.getElementById("thetext");
-            updateCanvas(textarea.value, 180);
+            updateCanvas(textarea.value, 330, "MCMCMCL", "brumag");
         }
         imageObj.src = "rumag.png";
 
-        function updateCanvas(text, starty) {
+        function brumagify(text) {
+            var text = text.toUpperCase();
+            text = text.replace(/ /g, ".");
+            text = text.replace(/(.)$/gm, "$1.");
+            return text;
+        }
+
+        function updateCanvas(text, starty, est, brentnaam) {
             context.save()
             context.drawImage(imageObj, 0, 0);
             context.restore();
 
             context.save();
-            console.log(starty);
 
             var lineHeight = 52;
             var textHeight = 0;
 
-            text = text.toUpperCase();
-            text = text.replace(/ /g, ".");
-            text = text.replace(/(.)$/gm, "$1.");
+            text = brumagify(text);
             var lines = text.split("\n");
 
             context.translate(450, starty);
@@ -60,22 +170,37 @@ in een prachtige tijd</textarea>
             }
 
             context.font = "16pt AlternateGothic";
-            context.fillText("- EST. M M X I I I -", 0, textHeight + 10);
+
+            var est = est.toUpperCase();
+            var brentnaam = brumagify(brentnaam);
+
+            context.fillText("- EST. " + est + " -", 0, textHeight + 10);
 
             context.font = "40pt AlternateGothic";
-            context.fillText("BRUMAG.", 0, textHeight + 55);
+            context.fillText(brentnaam, 0, textHeight + 55);
 
             context.restore();
         }
 
         var textarea = document.getElementById("thetext");
-        textarea.onkeyup = function(ta) {
-            updateCanvas(ta.target.value, input.value);
+        textarea.onkeyup = function (ta) {
+            console.log("ke y up")
+            updateCanvas(ta.target.value, starty.value, est.value, brentnaam.value);
         }
 
-        var input = document.getElementById("starty");
-        input.onchange = function(ta) {
-            updateCanvas(textarea.value, input.value);
+        var starty = document.getElementById("starty");
+        starty.onchange = function (e) {
+            updateCanvas(textarea.value, starty.value, est.value, brentnaam.value);
+        }
+
+        var est = document.getElementById("est");
+        est.onkeyup = function(e) {
+            updateCanvas(textarea.value, starty.value, est.value, brentnaam.value);
+        }
+
+        var brentnaam = document.getElementById("brentnaam");
+        brentnaam.onkeyup = function(e) {
+            updateCanvas(textarea.value, starty.value, est.value, brentnaam.value);
         }
     </script>
 
