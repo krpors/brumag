@@ -62,7 +62,7 @@ in een prachtige tijd</textarea>
     <canvas id="canvas" width="900" height="900"></canvas>
 
     <h2>Stap 5:</h2>
-    Rechtermuisknop om het op te slaan als een plaatje.
+    Rechtermuisknop om het op te slaan als een plaatje of <button id="save">Download</button>.
 
     <h2>Stap 6:</h2>
     ???
@@ -201,6 +201,13 @@ in een prachtige tijd</textarea>
         var brentnaam = document.getElementById("brentnaam");
         brentnaam.onkeyup = function(e) {
             updateCanvas(textarea.value, starty.value, est.value, brentnaam.value);
+        }
+
+        var button = document.getElementById("save");
+        button.onclick = function(e) {
+              // here is the most important part because if you dont replace you will get a DOM 18 exception.
+            var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            window.location.href=image;
         }
     </script>
 
