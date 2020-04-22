@@ -15,7 +15,7 @@
     <header>
         <h1>BRUMAG.</h1>
 
-        Maak hier je irrante-met-puntjes-geschreven-tekst zelf en strijk met de
+        Maak hier je irritante-met-puntjes-geschreven-tekst zelf en strijk met de
         eer van originaliteit! Of juist niet. Ik weet het niet. Hier zijn wat
         citaten:
 
@@ -57,9 +57,19 @@ in een prachtige tijd</textarea>
 
     <h2>Stap 4:</h2>
     Verticale uitlijning van je tekst:
-     <input type="number" id="starty" value="330" step="10" />
 
-    <canvas id="canvas" width="900" height="900"></canvas>
+    <div class="row">
+        <div class="column">
+            <button class="align" data-amount="-20">🡹</button>
+            <button class="align" data-amount="-5">🡩</button>
+            <hr/>
+            <button class="align" data-amount="5">🡫</button>
+            <button class="align" data-amount="20">🡻</button>
+        </div>
+        <div class="column">
+            <canvas id="canvas" width="900" height="900"></canvas>
+        </div>
+      </div>
 
     <h2>Stap 5:</h2>
     Rechtermuisknop om het op te slaan als een plaatje of <button id="save">Download</button>.
@@ -137,6 +147,8 @@ in een prachtige tijd</textarea>
         }
         imageObj.src = "rumag.png";
 
+        var align = 330;
+
         function brumagify(text) {
             var text = text.toUpperCase();
             text = text.replace(/ /g, ".");
@@ -157,7 +169,7 @@ in een prachtige tijd</textarea>
             text = brumagify(text);
             var lines = text.split("\n");
 
-            context.translate(450, starty);
+            context.translate(450, align);
 
             context.font = "50pt AlternateGothic";
             context.fillStyle = "white";
@@ -185,22 +197,17 @@ in een prachtige tijd</textarea>
         var textarea = document.getElementById("thetext");
         textarea.onkeyup = function (ta) {
             console.log("ke y up")
-            updateCanvas(ta.target.value, starty.value, est.value, brentnaam.value);
-        }
-
-        var starty = document.getElementById("starty");
-        starty.onchange = function (e) {
-            updateCanvas(textarea.value, starty.value, est.value, brentnaam.value);
+            updateCanvas(ta.target.value, align, est.value, brentnaam.value);
         }
 
         var est = document.getElementById("est");
         est.onkeyup = function(e) {
-            updateCanvas(textarea.value, starty.value, est.value, brentnaam.value);
+            updateCanvas(textarea.value, align, est.value, brentnaam.value);
         }
 
         var brentnaam = document.getElementById("brentnaam");
         brentnaam.onkeyup = function(e) {
-            updateCanvas(textarea.value, starty.value, est.value, brentnaam.value);
+            updateCanvas(textarea.value, align, est.value, brentnaam.value);
         }
 
         var button = document.getElementById("save");
@@ -208,6 +215,16 @@ in een prachtige tijd</textarea>
               // here is the most important part because if you dont replace you will get a DOM 18 exception.
             var image = canvas.toDataURL("image/png");
             window.location.href=image;
+        }
+
+        var alignElements = document.getElementsByClassName("align");
+        for(var i = 0; i < alignElements.length; i++) {
+            var el = alignElements[i];
+            el.onclick = function(e) {
+                var amount = Number(e.target.getAttribute("data-amount"));
+                align += amount;
+                updateCanvas(textarea.value, align, est.value, brentnaam.value);
+            }
         }
     </script>
 
