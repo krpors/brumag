@@ -41,6 +41,8 @@
                 marqueetext.innerHTML += "&nbsp;";
                 marqueetext.style.setProperty("font-size", fontsize.value + "em");
 
+                themarquee.requestFullscreen();
+
                 marquee(".marquee", 0.8);
             });
         });
