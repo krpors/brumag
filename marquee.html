@@ -14,7 +14,7 @@
             const clone = parentSelector.innerHTML;
             const firstElement = parentSelector.children[0];
 
-            const textWidth = firstElement.clientWidth;
+            const textWidth = firstElement.scrollWidth;
             const screenWidth = window.innerWidth;
 
             // console.log(`Text width: ${textWidth}`);
@@ -27,6 +27,7 @@
             firstElement.style.marginLeft = startingPosition;
 
             setInterval(function () {
+                console.log(`i = ${i} and textWidth = ${textWidth} and screenwidth = ${screenWidth}`);
                 firstElement.style.marginLeft = `${i}px`;
                 if (i < -textWidth) {
                     i = screenWidth;
