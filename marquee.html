@@ -10,19 +10,29 @@
     <script>
         function marquee(selector, speed) {
             const parentSelector = document.querySelector(selector);
+
             const clone = parentSelector.innerHTML;
             const firstElement = parentSelector.children[0];
-            let i = 0;
-            parentSelector.insertAdjacentHTML('beforeend', clone);
-            parentSelector.insertAdjacentHTML('beforeend', clone);
+
+            const textWidth = firstElement.clientWidth;
+            const screenWidth = window.innerWidth;
+
+            // console.log(`Text width: ${textWidth}`);
+
+            const startingPosition = `${screenWidth - 100}px`;
+            let i = screenWidth - 100;
+            // parentSelector.insertAdjacentHTML('beforeend', clone);
+            // parentSelector.insertAdjacentHTML('beforeend', clone);
+
+            firstElement.style.marginLeft = startingPosition;
 
             setInterval(function () {
-                firstElement.style.marginLeft = `-${i}px`;
-                if (i > firstElement.clientWidth) {
-                i = 0;
+                firstElement.style.marginLeft = `${i}px`;
+                if (i < -textWidth) {
+                    i = screenWidth;
                 }
-                i = i + speed;
-            }, 0);
+                i = i - speed;
+            }, 5);
         }
 
         //after window is completed load
@@ -36,16 +46,16 @@
             const whatwhat = document.getElementById("whatwhat");
             const marqueetext = document.getElementById("marqueetext");
             const fontsize = document.getElementById("fontsize");
+            const speed = document.getElementById("speed").value;
+
             button.addEventListener('click', function() {
                 inputbox.remove();
                 themarquee.style.setProperty("display", "flex");
-                marqueetext.innerText = whatwhat.value + " |";
-                marqueetext.innerHTML += "&nbsp;";
+                marqueetext.innerText = whatwhat.value;
                 marqueetext.style.setProperty("font-size", fontsize.value + "em");
 
-                themarquee.requestFullscreen();
-
-                marquee(".marquee", 0.8);
+                // themarquee.requestFullscreen();
+                marquee(".marquee", Number(speed));
             });
         });
 
@@ -66,19 +76,24 @@
         .marquee h1{
             font-size: 10em;
             white-space: nowrap;
+            margin: auto; /* center in the middle */
             color: white;
-            transform: translateX(3em);
+            width: 100%;
+            vertical-align: top;
+
+            /* transform: translateX(3em); */
         }
 
         .parent {
             display: flex;
             height: 100vh; /* Or whatever */
-            margin: 0;
+            /* margin: 0; */
         }
 
         .child {
             width: 100%;  /* Or whatever */
             margin: auto;  /* Magic! */
+
         }
 
         input {
@@ -99,8 +114,9 @@
             <div class="child">
                 <div style="padding: 80px; margin: auto">
                     <form>
-                        <input type="text" id="whatwhat" size="25" placeholder="Typ je meuk hier"/>
-                        <input type="number" id="fontsize" min="0" max="100" value="10"/>
+                        Hoi: <input type="text" id="whatwhat" size="25" placeholder="Typ je meuk hier"/><br/>
+                        Size: <input type="number" id="fontsize" min="0" max="100" value="10"/><br/>
+                        Speed: <input type="number" id="speed" min="1" max="1000" value="1"/>
                         <p/>
                         <input class="submitbutton" type="submit" id="thebutton" value="Dit wordt 'm"/>
                     </form>
@@ -109,11 +125,9 @@
         </div>
     </div>
 
-    <div id="themarquee" class="parent" style="display: none">
-        <div class="child">
-            <div class="marquee">
-                <h1 id="marqueetext">placeholder</h1>
-            </div>
+    <div id="themarquee" class="parent" style="display: none;">
+        <div class="marquee">
+            <h1 id="marqueetext">hailey is lief</h1>
         </div>
     </div>
 
