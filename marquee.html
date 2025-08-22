@@ -27,7 +27,8 @@
             firstElement.style.marginLeft = startingPosition;
 
             setInterval(function () {
-                console.log(`i = ${i} and textWidth = ${textWidth} and screenwidth = ${screenWidth}`);
+                const screenWidth = window.innerWidth;
+                // console.log(`i = ${i} and textWidth = ${textWidth} and screenwidth = ${screenWidth}`);
                 firstElement.style.marginLeft = `${i}px`;
                 if (i < -textWidth) {
                     i = screenWidth;
@@ -50,12 +51,13 @@
             const speed = document.getElementById("speed").value;
 
             button.addEventListener('click', function() {
+                themarquee.requestFullscreen();
+
                 inputbox.remove();
                 themarquee.style.setProperty("display", "flex");
                 marqueetext.innerText = whatwhat.value;
                 marqueetext.style.setProperty("font-size", fontsize.value + "em");
 
-                themarquee.requestFullscreen();
                 marquee(".marquee", Number(speed));
             });
         });
